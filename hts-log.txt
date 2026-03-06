@@ -1,0 +1,13 @@
+HTTrack3.49-2+htsswf+htsjava launched on Fri, 06 Mar 2026 11:42:05 at https://odontointer.com.br +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://odontointer.com.br -O1 "C:\Users\TiagoBatista\Documents\odontointer-site-main" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+11:42:07	Warning: 	Note: due to https://odontointer.com.br remote robots.txt rules, links beginning with these path will be forbidden: /version (see in the options to disable this)
+11:42:25	Error: 	"Not Found" (404) at link https://odontointer.com.br/assets/owl.video.play.png (from https://odontointer.com.br/assets/criadordesites.css?7cdbfefa-f19b-4d0e-9e59-1eae7cac8f0c)
+
+HTTrack Website Copier/3.49-2 mirror complete in 20 seconds : 51 links scanned, 49 files written (6801363 bytes overall) [6819826 bytes received at 340991 bytes/sec]
+(1 errors, 1 warnings, 0 messages)
