@@ -57,3 +57,33 @@ h1{font-size:clamp(52px,6vw,86px);max-width:600px}.hero-lede{max-width:470px}.bu
 @media(max-width:600px){.service-portfolio{padding:95px 0}.service-portfolio .service-grid{grid-template-columns:1fr}.service-portfolio .service-card{min-height:355px;border-right:1px solid rgba(112,70,84,.13)!important;border-bottom:1px solid rgba(112,70,84,.13)!important;border-radius:24px 64px 24px 24px}.service-card-meta{margin-bottom:65px}.service-portfolio-note{display:block}.service-portfolio-note p{margin-top:8px;text-align:left;line-height:1.6}}
 
 body{overflow-x:hidden}
+
+/* Curadoria fotográfica institucional: calor humano, sofisticação e consistência de paleta. */
+.visual-card-main .hero-photo{
+  object-position:center 42%;
+  filter:saturate(.82) sepia(.08) contrast(1.05) brightness(.93);
+}
+.gallery-founder-portrait img{
+  object-position:center 24%;
+  filter:saturate(.80) sepia(.07) contrast(1.02) brightness(.98);
+}
+.gallery-founder-embrace img{
+  object-position:center 30%;
+  filter:saturate(.79) sepia(.08) contrast(1.02) brightness(.97);
+}
+.gallery-founder-origin img{
+  object-position:center 54%;
+  filter:saturate(.70) sepia(.13) contrast(1.03) brightness(.91);
+}
+.experience-image>img{
+  object-position:center 31%;
+  filter:saturate(.76) sepia(.10) contrast(1.06) brightness(.91);
+}
+.gallery-founder-origin:after{background:linear-gradient(180deg,rgba(20,15,18,.02) 30%,rgba(20,15,18,.76) 100%)}
+@media(max-width:760px){
+  .visual-card-main .hero-photo{object-position:center 36%}
+  .gallery-founder-portrait img{object-position:center 20%}
+  .gallery-founder-origin img{object-position:center 49%}
+  .experience-image>img{object-position:center 26%}
+}
+
