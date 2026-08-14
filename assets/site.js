@@ -40,10 +40,24 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 const services = {
   'Implantes dentários': 'A avaliação de implantes considera as condições clínicas e as possibilidades de reabilitação antes de qualquer planejamento.',
   'Prótese dentária': 'O planejamento de prótese avalia alternativas de reposição ou reconstrução dentária de acordo com as necessidades de cada caso.',
+  'Prótese protocolo': 'A prótese protocolo exige avaliação clínica e planejamento individual para compreender as possibilidades de reabilitação.',
+  'Endodontia': 'A endodontia avalia as condições internas do dente e a indicação de tratamento de canal de acordo com cada caso.',
   'Clareamento dental': 'O clareamento começa com uma avaliação individual para entender as possibilidades e os cuidados adequados ao seu caso.',
-  'Facetas': 'O planejamento de facetas considera suas condições clínicas, seus objetivos e as possibilidades indicadas para cada sorriso.',
+  'Faceta em resina': 'O planejamento de faceta em resina considera as condições clínicas, os objetivos e as possibilidades adequadas para cada sorriso.',
+  'Faceta em porcelana': 'O planejamento de faceta em porcelana considera as condições clínicas, os objetivos e as possibilidades adequadas para cada sorriso.',
+  'Ortodontia': 'A avaliação ortodôntica observa o posicionamento dental e define as possibilidades de acompanhamento para cada fase.',
+  'Alinhadores invisíveis': 'A indicação de alinhadores invisíveis depende de avaliação ortodôntica e planejamento individualizado.',
+  'Ortopedia dos maxilares': 'A ortopedia dos maxilares acompanha o desenvolvimento e as relações funcionais dos maxilares conforme a fase de crescimento.',
   'Odontologia miofuncional': 'A odontologia miofuncional avalia funções e hábitos orofaciais relacionados à mastigação, deglutição, respiração e fala.',
+  'DTM e dor orofacial': 'A avaliação de DTM e dor orofacial investiga sinais, sintomas e fatores relacionados ao desconforto para orientar o cuidado.',
+  'Odontologia do sono': 'A odontologia do sono avalia a possibilidade de uso de placas para ronco e apneia, sempre conforme indicação profissional.',
+  'Protetor bucal esportivo personalizado': 'O protetor bucal esportivo personalizado é planejado conforme a prática esportiva e as características de cada pessoa.',
   'Harmonização orofacial': 'A harmonização orofacial parte de uma avaliação individual das necessidades funcionais e estéticas, com indicação definida pelo profissional responsável.',
+  'Reabilitação e saúde dental': 'Esta jornada reúne implantes, próteses, prótese protocolo e endodontia. A equipe pode orientar qual avaliação faz mais sentido.',
+  'Estética do sorriso': 'Esta jornada reúne clareamento e facetas em resina ou porcelana, sempre a partir de avaliação individual.',
+  'Alinhamento e desenvolvimento': 'Esta jornada reúne ortodontia, alinhadores invisíveis e ortopedia dos maxilares.',
+  'Função, dor e sono': 'Esta jornada reúne odontologia miofuncional, DTM e dor orofacial e odontologia do sono.',
+  'Proteção e cuidado orofacial': 'Esta jornada reúne protetor bucal esportivo personalizado e harmonização orofacial.',
   'Avaliação geral': 'A avaliação inicial é o melhor ponto de partida quando você ainda não sabe qual caminho faz sentido para o seu momento.'
 };
 

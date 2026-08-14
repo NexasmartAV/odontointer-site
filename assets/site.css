@@ -56,6 +56,25 @@ h1{font-size:clamp(52px,6vw,86px);max-width:600px}.hero-lede{max-width:470px}.bu
 @media(max-width:900px){.service-portfolio .service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.service-portfolio .service-card{min-height:390px}.service-heading{display:block}.service-heading .heading-side{max-width:540px;margin-top:26px}}
 @media(max-width:600px){.service-portfolio{padding:95px 0}.service-portfolio .service-grid{grid-template-columns:1fr}.service-portfolio .service-card{min-height:355px;border-right:1px solid rgba(112,70,84,.13)!important;border-bottom:1px solid rgba(112,70,84,.13)!important;border-radius:24px 64px 24px 24px}.service-card-meta{margin-bottom:65px}.service-portfolio-note{display:block}.service-portfolio-note p{margin-top:8px;text-align:left;line-height:1.6}}
 
+/* Portfólio clínico ampliado - organizado por jornadas de cuidado. */
+.service-portfolio .service-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.service-portfolio .service-card{min-height:465px;padding:30px 31px 27px}
+.service-portfolio .service-card.featured{grid-row:span 2}
+.service-card-meta{margin-bottom:38px}
+.service-portfolio .service-card h3{max-width:390px}
+.service-portfolio .service-card>p{max-width:430px;margin-bottom:18px}
+.service-list{display:grid;gap:0;margin:4px 0 26px;padding:0;list-style:none;border-top:1px solid rgba(112,70,84,.12)}
+.service-list li{margin:0;border-bottom:1px solid rgba(112,70,84,.12)}
+.service-list li a{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border:0!important;font:12px/1.35 Arial,sans-serif!important;letter-spacing:.025em!important;text-transform:none!important}
+.service-list li a:after{content:'›';color:var(--gold);font:18px/1 Georgia,serif;transition:transform .2s ease}
+.service-list li a:hover:after{transform:translateX(3px)}
+.service-card.featured .service-list{border-color:rgba(255,253,248,.18)}
+.service-card.featured .service-list li{border-color:rgba(255,253,248,.18)}
+.service-card.featured .service-list li a{color:#fffdf9}
+.service-category-cta{margin-top:auto!important}
+@media(max-width:900px){.service-portfolio .service-card.featured{grid-row:auto}.service-portfolio .service-card{min-height:440px}}
+@media(max-width:600px){.service-portfolio .service-grid{grid-template-columns:1fr}.service-portfolio .service-card{min-height:0}.service-card-meta{margin-bottom:34px}}
+
 body{overflow-x:hidden}
 
 /* Curadoria fotográfica institucional: calor humano, sofisticação e consistência de paleta. */
