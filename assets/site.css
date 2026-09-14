@@ -107,3 +107,20 @@ body{overflow-x:hidden}
   .experience-image>img{object-position:center 26%}
 }
 
+.concierge-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 14px 0;
+  color: #4f3e43;
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.concierge-consent input {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  accent-color: #704654;
+  flex: 0 0 auto;
+}

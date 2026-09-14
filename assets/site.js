@@ -26,6 +26,7 @@ nav?.querySelectorAll('a').forEach((link) => {
 });
 
 const WHATSAPP_NUMBER = '5511988728242';
+const CLARA_CONCIERGE_ENDPOINT = 'https://gestao.odontointer.com.br/api/index.php?route=concierge';
 const overlay = document.querySelector('#concierge-overlay');
 const dialog = document.querySelector('.concierge-dialog');
 const chat = document.querySelector('#concierge-chat');
@@ -210,7 +211,8 @@ function resetConcierge(prefill = {}) {
     timeframe: '',
     period: '',
     subject: '',
-    note: ''
+    note: '',
+    phone: ''
   };
   chat?.replaceChildren();
   clearActions();
@@ -295,7 +297,7 @@ function continueAfterName() {
     return;
   }
   if (session.intent === 'Urgência odontológica') {
-    showSummary();
+    askPhone();
   }
 }
 
@@ -417,6 +419,27 @@ function askOptionalNote() {
       maxLength: 180,
       onSubmit: (note) => {
         session.note = note;
+        askPhone();
+      }
+    });
+  });
+}
+
+function askPhone() {
+  botSays(['Qual celular a recepção pode usar para retornar seu contato?'], () => {
+    renderTextInput({
+      label: 'Celular com DDD',
+      placeholder: '(11) 99999-9999',
+      buttonLabel: 'Revisar atendimento',
+      maxLength: 20,
+      onSubmit: (phone) => {
+        const digits = phone.replace(/\D+/g, '');
+        if (digits.length < 10 || digits.length > 11) {
+          addMessage('O celular precisa ter DDD e 10 ou 11 números. Tente novamente.', 'bot', 'alert');
+          askPhone();
+          return;
+        }
+        session.phone = digits;
         showSummary();
       }
     });
@@ -449,6 +472,7 @@ function showUrgencyGuidance() {
 function summaryRows() {
   return [
     ['Nome', session.name],
+    ['Celular', session.phone],
     ['Motivo', session.intent],
     ['Interesse', session.service],
     ['Quando', session.timeframe],
@@ -496,16 +520,46 @@ function showSummary() {
     const whatsappButton = document.createElement('button');
     whatsappButton.type = 'button';
     whatsappButton.className = 'concierge-whatsapp-button';
-    whatsappButton.innerHTML = '<span>Continuar no WhatsApp</span><b aria-hidden="true">↗</b>';
-    whatsappButton.addEventListener('click', () => {
-      window.open(buildWhatsAppMessage(), '_blank', 'noopener,noreferrer');
+    whatsappButton.innerHTML = '<span>Registrar e continuar no WhatsApp</span><b aria-hidden="true">↗</b>';
+    whatsappButton.disabled = true;
+
+    const consent = document.createElement('label');
+    consent.className = 'concierge-consent';
+    const consentInput = document.createElement('input');
+    consentInput.type = 'checkbox';
+    consentInput.required = true;
+    const consentText = document.createElement('span');
+    consentText.textContent = 'Autorizo a Odonto Inter a registrar estes dados na Clara e entrar em contato sobre esta solicitação.';
+    consent.append(consentInput, consentText);
+    consentInput.addEventListener('change', () => { whatsappButton.disabled = !consentInput.checked; });
+
+    const website = document.createElement('input');
+    website.type = 'text'; website.name = 'website'; website.tabIndex = -1; website.autocomplete = 'off'; website.hidden = true;
+
+    whatsappButton.addEventListener('click', async () => {
+      if (!consentInput.checked || whatsappButton.disabled) return;
+      whatsappButton.disabled = true;
+      const whatsappWindow = window.open('', '_blank');
+      const payload = { ...session, consent: true, website: website.value };
+      try {
+        const response = await fetch(CLARA_CONCIERGE_ENDPOINT, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload), keepalive: true
+        });
+        if (!response.ok) throw new Error('request rejected');
+        assurance.textContent = 'Pedido registrado na Clara. O WhatsApp foi aberto para você confirmar a conversa com a equipe.';
+      } catch {
+        assurance.textContent = 'O WhatsApp foi aberto, mas o registro na Clara não foi confirmado. A equipe receberá a mensagem quando você enviá-la.';
+      }
+      if (whatsappWindow) whatsappWindow.location.href = buildWhatsAppMessage();
+      else window.location.href = buildWhatsAppMessage();
     });
 
     const assurance = document.createElement('p');
     assurance.className = 'concierge-summary-assurance';
     assurance.textContent = 'Você poderá revisar a mensagem no WhatsApp antes de enviá-la. O agendamento será confirmado pela equipe.';
 
-    card.append(whatsappButton, assurance);
+    card.append(consent, website, whatsappButton, assurance);
     actions?.appendChild(card);
     window.requestAnimationFrame(() => whatsappButton.focus({ preventScroll: true }));
   });
